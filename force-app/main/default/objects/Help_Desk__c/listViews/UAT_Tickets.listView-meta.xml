@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UAT_Tickets</fullName>
+    <columns>NAME</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Type__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Description__c</columns>
+    <columns>Status__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Name_Of_Owner__c</columns>
+    <columns>Assigned_To__c</columns>
+    <columns>Escalate__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Additional_Note__c</columns>
+    <columns>All_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Awaiting Response</value>
+    </filters>
+    <label>UAT Tickets</label>
+</ListView>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Incomplete</fullName>
+    <columns>NAME</columns>
+    <columns>Priority__c</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>Type__c</columns>
+    <columns>Number_of_Installations_Requested__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Description__c</columns>
+    <columns>Status__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Name_Of_Owner__c</columns>
+    <columns>Assigned_To__c</columns>
+    <columns>Escalate__c</columns>
+    <columns>Last_Checked__c</columns>
+    <columns>Forecast_Completion_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Rejected,Cancelled,Complete</value>
+    </filters>
+    <label>Incomplete - Not Escalated</label>
+</ListView>

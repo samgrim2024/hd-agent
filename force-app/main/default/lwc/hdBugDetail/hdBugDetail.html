@@ -1,0 +1,61 @@
+<template>
+    <div class="detail-container">
+        <div class="header">
+            <h3 class="section-title">Tell us about the issue</h3>
+            <p class="section-subtitle">Fill in what you can — the more detail, the faster we can help</p>
+        </div>
+
+        <div class="form-fields">
+            <div class="field-group">
+                <lightning-input
+                    label="Subject"
+                    placeholder="e.g. Missing visibility of fields on finance review"
+                    value={subject}
+                    onchange={handleSubjectChange}
+                    required
+                    class="field-input">
+                </lightning-input>
+            </div>
+
+            <div class="field-group">
+                <lightning-input
+                    type="url"
+                    label="Link to record"
+                    placeholder="Paste the URL of the record where you saw the issue"
+                    value={linkToRecord}
+                    onchange={handleLinkChange}
+                    class="field-input">
+                </lightning-input>
+            </div>
+
+            <div class="field-group">
+                <lightning-textarea
+                    label="Expected behaviour"
+                    placeholder="What did you expect to happen?"
+                    value={expectedBehaviour}
+                    onchange={handleExpectedChange}
+                    max-length="5000"
+                    class="field-input">
+                </lightning-textarea>
+            </div>
+
+            <div class="field-group">
+                <lightning-textarea
+                    label="Steps to reproduce"
+                    placeholder="1. Go to...&#10;2. Click on...&#10;3. Notice that..."
+                    value={stepsToReproduce}
+                    onchange={handleStepsChange}
+                    max-length="5000"
+                    class="field-input">
+                </lightning-textarea>
+            </div>
+        </div>
+
+        <template lwc:if={showPreview}>
+            <div class="preview-bar fade-in">
+                <span class="preview-label">Preview</span>
+                <span class="preview-subject">{subject}</span>
+            </div>
+        </template>
+    </div>
+</template>

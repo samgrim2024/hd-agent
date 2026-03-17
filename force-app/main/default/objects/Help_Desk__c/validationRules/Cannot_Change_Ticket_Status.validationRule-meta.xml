@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Change_Ticket_Status</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISCHANGED( Status__c ) &amp;&amp;  $Setup.Automation_Settings__c.SB2_Workflow_Enabled__c = TRUE &amp;&amp;
+ $User.PSO_Member__c = FALSE</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>Status of created Help Desk Tickets can only be changed by CloudJungle and members of the WHP Stormbird Working Group.</errorMessage>
+</ValidationRule>

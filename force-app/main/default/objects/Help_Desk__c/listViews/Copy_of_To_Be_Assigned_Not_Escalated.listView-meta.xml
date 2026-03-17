@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_To_Be_Assigned_Not_Escalated</fullName>
+    <columns>NAME</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Description__c</columns>
+    <columns>Status__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Forecast_Completion_Date__c</columns>
+    <columns>Name_Of_Owner__c</columns>
+    <columns>Assigned_To__c</columns>
+    <columns>Additional_Note__c</columns>
+    <columns>All_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Escalate__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Completed_Date__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Not Started,Under Review,Awaiting Response,In Progress,In Testing,Awaiting Deployment</value>
+    </filters>
+    <filters>
+        <field>Type__c</field>
+        <operation>equals</operation>
+        <value>SmartHOPs</value>
+    </filters>
+    <filters>
+        <field>Assigned_To__c</field>
+        <operation>contains</operation>
+        <value>densley</value>
+    </filters>
+    <label>Outstanding SmartHops Tickets</label>
+</ListView>

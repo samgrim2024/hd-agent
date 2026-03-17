@@ -1,0 +1,66 @@
+<template>
+    <div class="intake-container">
+        <div class="section">
+            <h3 class="section-title">Select your business unit</h3>
+            <p class="section-subtitle">Choose the team this request relates to</p>
+            <div class="pill-grid">
+                <template for:each={businessUnits} for:item="bu">
+                    <button
+                        key={bu.value}
+                        class={bu.cssClass}
+                        data-id={bu.value}
+                        onclick={handleBuClick}>
+                        {bu.label}
+                    </button>
+                </template>
+            </div>
+        </div>
+
+        <template lwc:if={showTicketTypes}>
+            <div class="section fade-in">
+                <h3 class="section-title">What do you need?</h3>
+                <p class="section-subtitle">Select the closest match</p>
+                <div class="type-grid">
+                    <template for:each={ticketTypes} for:item="tt">
+                        <button
+                            key={tt.value}
+                            class={tt.cssClass}
+                            data-id={tt.value}
+                            onclick={handleTypeClick}>
+                            <div class="type-content">
+                                <span class="type-label">{tt.label}</span>
+                                <span class="type-desc">{tt.description}</span>
+                            </div>
+                            <span class={tt.radioClass}>
+                                <template lwc:if={tt.isSelected}>
+                                    <span class="radio-inner"></span>
+                                </template>
+                            </span>
+                        </button>
+                    </template>
+                </div>
+
+                <div class="fallback-section">
+                    <p class="fallback-prompt">None of these? Describe what you need</p>
+                    <lightning-textarea
+                        label="Describe your request"
+                        variant="label-hidden"
+                        placeholder="e.g. I need help with reporting dashboards for the Build team..."
+                        value={freeTextValue}
+                        onchange={handleFreeTextChange}
+                        max-length="500">
+                    </lightning-textarea>
+                </div>
+            </div>
+        </template>
+
+        <template lwc:if={showSummary}>
+            <div class="summary-bar fade-in">
+                <span class="summary-label">Selection</span>
+                <span class="summary-chip bu-chip">{selectedBuLabel}</span>
+                <span class="summary-arrow">&#8250;</span>
+                <span class="summary-chip type-chip">{selectedTypeLabel}</span>
+            </div>
+        </template>
+    </div>
+</template>

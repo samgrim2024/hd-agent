@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_All23</fullName>
+    <columns>NAME</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>Type__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Description__c</columns>
+    <columns>Status__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Name_Of_Owner__c</columns>
+    <columns>Assigned_To__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Escalate__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Hours__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Awaiting Deployment</value>
+    </filters>
+    <label>Copy of All</label>
+    <sharedTo>
+        <group>Purchase_Ledger</group>
+    </sharedTo>
+</ListView>

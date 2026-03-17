@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Incomplete_SBU_SBU_Tieckets</fullName>
+    <booleanFilter>1 AND 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Subject__c</columns>
+    <columns>Type__c</columns>
+    <columns>Priority__c</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>Description__c</columns>
+    <columns>Number_of_Installations_Requested__c</columns>
+    <columns>Escalate__c</columns>
+    <columns>Ready_for_Sprint__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Forecast_Completion_Date__c</columns>
+    <columns>Additional_Note__c</columns>
+    <columns>All_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Not Started,Under Review,Awaiting Response,Awaiting Approval,Tasked to CloudJungle,In Progress,In Testing,Awaiting Deployment,On Hold</value>
+    </filters>
+    <filters>
+        <field>Assigned_To__c</field>
+        <operation>equals</operation>
+        <value>richard burrell</value>
+    </filters>
+    <label>RB Tickets to Clear By Status</label>
+</ListView>

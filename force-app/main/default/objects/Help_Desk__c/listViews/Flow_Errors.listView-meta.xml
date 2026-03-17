@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flow_Errors</fullName>
+    <columns>NAME</columns>
+    <columns>Subject__c</columns>
+    <columns>Ticket_Status_Visual__c</columns>
+    <columns>Days_Since_Escalation_Concatenation__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Status__c</columns>
+    <columns>Escalated_Date__c</columns>
+    <columns>Priority__c</columns>
+    <columns>Type__c</columns>
+    <columns>Description__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Assigned_To__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Subject__c</field>
+        <operation>startsWith</operation>
+        <value>Error Occurred During Flow</value>
+    </filters>
+    <label>Flow Errors</label>
+</ListView>

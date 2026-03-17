@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <label>Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Data Management</fullName>
+                <default>false</default>
+                <label>Data Management</label>
+            </value>
+            <value>
+                <fullName>User Management</fullName>
+                <default>false</default>
+                <label>User Management</label>
+            </value>
+            <value>
+                <fullName>Reporting/Dashboards</fullName>
+                <default>false</default>
+                <label>Reporting/Dashboards</label>
+            </value>
+            <value>
+                <fullName>New Feature/Functionality Request</fullName>
+                <default>false</default>
+                <label>New Feature/Functionality Request</label>
+            </value>
+            <value>
+                <fullName>Bug/Error Report</fullName>
+                <default>false</default>
+                <label>Bug/Error Report</label>
+            </value>
+            <value>
+                <fullName>New Software Request</fullName>
+                <default>false</default>
+                <label>New Software Request</label>
+            </value>
+            <value>
+                <fullName>SmartHOPs</fullName>
+                <default>false</default>
+                <label>SmartHOPs</label>
+            </value>
+            <value>
+                <fullName>DNO/ICP Installation</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>DNO/ICP Installation</label>
+            </value>
+            <value>
+                <fullName>Existing Bug Fix</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Existing Bug Fix</label>
+            </value>
+            <value>
+                <fullName>Idea</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Idea</label>
+            </value>
+            <value>
+                <fullName>New functionality</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>New functionality</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Small Change</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Small Change</label>
+            </value>
+            <value>
+                <fullName>Training</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Training</label>
+            </value>
+            <value>
+                <fullName>Training Request</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Training Request</label>
+            </value>
+            <value>
+                <fullName>Uploads</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Uploads</label>
+            </value>
+            <value>
+                <fullName>User Support</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>User Support</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

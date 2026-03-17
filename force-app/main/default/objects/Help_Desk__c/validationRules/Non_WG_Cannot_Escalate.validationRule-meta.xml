@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Non_WG_Cannot_Escalate</fullName>
+    <active>true</active>
+    <errorConditionFormula>(ISCHANGED(  Escalate__c  ) &amp;&amp; $Setup.Automation_Settings__c.SB2_Workflow_Enabled__c = TRUE &amp;&amp; $Setup.Automation_Settings__c.Super_User_Workflow_Enabled__c =TRUE) &amp;&amp;  NOT($User.Email = &quot;whp@cloudjungle.co.uk&quot;) || (ISNEW() &amp;&amp; Escalate__c =TRUE &amp;&amp; $Setup.Automation_Settings__c.SB2_Workflow_Enabled__c = TRUE &amp;&amp; $Setup.Automation_Settings__c.Super_User_Workflow_Enabled__c =TRUE)&amp;&amp;  NOT($User.Email = &quot;whp@cloudjungle.co.uk&quot;)</errorConditionFormula>
+    <errorDisplayField>Escalate__c</errorDisplayField>
+    <errorMessage>Tickets cannot be Escalated to CloudJungle, other than by members of the Stormbird Working Group.</errorMessage>
+</ValidationRule>

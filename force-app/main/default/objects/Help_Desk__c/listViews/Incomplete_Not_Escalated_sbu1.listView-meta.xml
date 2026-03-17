@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Incomplete_Not_Escalated_sbu1</fullName>
+    <columns>NAME</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>Type__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Description__c</columns>
+    <columns>Status__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Name_Of_Owner__c</columns>
+    <columns>Assigned_To__c</columns>
+    <columns>Escalate__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Completed_Date__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Escalate__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Not Started,Work In Progress,Awaiting Response,On Hold</value>
+    </filters>
+    <filters>
+        <field>Business_Unit__c</field>
+        <operation>equals</operation>
+        <value>SBU1</value>
+    </filters>
+    <label>Incomplete - Not Escalated sbu1</label>
+</ListView>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RB_Tickets_in_Current_Sprint</fullName>
+    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+    <columns>NAME</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Priority__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Type__c</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>Assigned_To__c</columns>
+    <columns>Description__c</columns>
+    <columns>Status__c</columns>
+    <columns>Escalate__c</columns>
+    <columns>Ready_for_Sprint__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Forecast_Completion_Date__c</columns>
+    <columns>Additional_Note__c</columns>
+    <columns>All_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Forecast_Completion_Date__c</field>
+        <operation>equals</operation>
+        <value>12/19/2025</value>
+    </filters>
+    <filters>
+        <field>Assigned_To__c</field>
+        <operation>contains</operation>
+        <value>burrell</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Complete,Cancelled</value>
+    </filters>
+    <label>RB Tickets in Current Sprint</label>
+</ListView>

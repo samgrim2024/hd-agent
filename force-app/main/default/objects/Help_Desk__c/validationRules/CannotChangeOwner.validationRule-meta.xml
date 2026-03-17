@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotChangeOwner</fullName>
+    <active>true</active>
+    <errorConditionFormula>$User.PSO_Member__c  &lt;&gt; TRUE &amp;&amp; ISCHANGED(OwnerId)</errorConditionFormula>
+    <errorMessage>Only the current record owner or PSO can change the record owner. If you have permission please ensure you have provided justification for changing the owner.</errorMessage>
+</ValidationRule>

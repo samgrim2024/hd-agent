@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sitec_FL_In_Current_Sprint</fullName>
+    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+    <columns>NAME</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Assigned_To__c</columns>
+    <columns>Type__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Priority__c</columns>
+    <columns>Description__c</columns>
+    <columns>Status__c</columns>
+    <columns>Escalate__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Last_Checked__c</columns>
+    <columns>Forecast_Completion_Date__c</columns>
+    <columns>Additional_Note__c</columns>
+    <columns>All_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Rejected,Cancelled,Complete</value>
+    </filters>
+    <filters>
+        <field>Business_Unit__c</field>
+        <operation>equals</operation>
+        <value>Sitec FL</value>
+    </filters>
+    <filters>
+        <field>Forecast_Completion_Date__c</field>
+        <operation>equals</operation>
+        <value>5/23/2025</value>
+    </filters>
+    <label>Sitec FL - In Current Sprint</label>
+</ListView>

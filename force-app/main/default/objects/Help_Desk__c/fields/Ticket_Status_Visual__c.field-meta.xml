@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ticket_Status_Visual__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL( Status__c, &quot;Awaiting Response&quot;), &quot;Awaiting Response❓&quot;,
+IF(ISPICKVAL( Status__c, &quot;In Progress&quot;), &quot;In Progress 🟡&quot;,
+IF(ISPICKVAL( Status__c, &quot;Complete&quot;), &quot;Complete ✅&quot;,
+IF(ISPICKVAL( Status__c, &quot;Escalated To Project&quot;), &quot;Escalated To Project 📓&quot;,
+IF(ISPICKVAL( Status__c, &quot;On Hold&quot;), &quot;On Hold ⏸️&quot;,
+IF(ISPICKVAL( Status__c, &quot;Blocked&quot;), &quot;Blocked 🅱️&quot;,
+IF(ISPICKVAL( Status__c, &quot;Cancelled&quot;), &quot;Cancelled ❌&quot;,
+IF(ISPICKVAL( Status__c , &quot;Backlog&quot;), &quot;Backlog 🔙&quot;,
+IF(ISPICKVAL( Status__c , &quot;Tasked to CloudJungle&quot;), &quot;Tasked to CloudJungle❗&quot;,
+IF(ISPICKVAL( Status__c , &quot;To be Reviewed&quot;),&quot;To be Reviewed 📝&quot;,
+IF(ISPICKVAL( Status__c , &quot;In Testing&quot;), &quot;In Testing 🧪&quot;,
+IF(ISPICKVAL( Status__c , &quot;Awaiting Deployment&quot;), &quot;Awaiting Deployment 🔜&quot;,
+IF(ISPICKVAL( Status__c , &quot;Ready to Start&quot;), &quot;Ready to Start👍&quot;,
+IF(ISPICKVAL( Status__c , &quot;Not Started&quot;), &quot;Not Started 🔴&quot;,
+
+&quot;Status Not Selected &quot;))))))))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Ticket Status Visual</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

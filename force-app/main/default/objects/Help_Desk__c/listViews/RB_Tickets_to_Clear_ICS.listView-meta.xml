@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RB_Tickets_to_Clear_ICS</fullName>
+    <booleanFilter>1 AND 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Assigned_To__c</columns>
+    <columns>Type__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Priority__c</columns>
+    <columns>Description__c</columns>
+    <columns>Number_of_Installations_Requested__c</columns>
+    <columns>Status__c</columns>
+    <columns>Escalate__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Last_Checked__c</columns>
+    <columns>Forecast_Completion_Date__c</columns>
+    <columns>Additional_Note__c</columns>
+    <columns>All_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Rejected,Cancelled,Complete</value>
+    </filters>
+    <filters>
+        <field>Business_Unit__c</field>
+        <operation>equals</operation>
+        <value>ICS Group</value>
+    </filters>
+    <label>Tickets to Clear - ICS</label>
+</ListView>

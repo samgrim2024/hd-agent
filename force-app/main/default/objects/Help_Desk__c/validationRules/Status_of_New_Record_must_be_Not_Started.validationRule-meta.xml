@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_of_New_Record_must_be_Not_Started</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT($User.Email = &quot;whp@cloudjungle.co.uk&quot;) &amp;&amp; $Setup.Automation_Settings__c.Super_User_Workflow_Enabled__c =TRUE &amp;&amp; ISNEW() &amp;&amp; NOT( TEXT( Status__c ) = &quot;Not Started&quot;)</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>When creating a new Help Desk Ticket, the Status field must be set to &quot;Not Started&quot;</errorMessage>
+</ValidationRule>

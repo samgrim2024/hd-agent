@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Help_Text_del__c</fullName>
+    <defaultValue>&quot;If you have any screenshots or files to attach to the ticket please go to the ticket once it has been created and attach them to the Files list.&quot;</defaultValue>
+    <label>Help Text</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>
