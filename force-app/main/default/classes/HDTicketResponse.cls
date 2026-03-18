@@ -1,32 +1,12 @@
-public with sharing class HDTicketResponse {
+@JsonAccess(serializable='always' deserializable='always')
+global class HDTicketResponse {
 
-    @InvocableVariable(label='Ticket ID')
-    public String ticketId;
+    @InvocableVariable @AuraEnabled
+    global HDTicketConfirmData confirmData;
 
-    @InvocableVariable(label='Ticket Number')
-    public String ticketNumber;
+    @InvocableVariable @AuraEnabled
+    global Boolean success;
 
-    @InvocableVariable(label='Ticket URL')
-    public String ticketUrl;
-
-    @InvocableVariable(label='Subject')
-    public String subject;
-
-    @InvocableVariable(label='Business Unit')
-    public String businessUnit;
-
-    @InvocableVariable(label='Ticket Type')
-    public String ticketType;
-
-    @InvocableVariable(label='Status')
-    public String status;
-
-    @InvocableVariable(label='Description')
-    public String description;
-
-    @InvocableVariable(label='Success')
-    public Boolean success;
-
-    @InvocableVariable(label='Error Message')
-    public String errorMessage;
+    @InvocableVariable @AuraEnabled
+    global String errorMessage;
 }

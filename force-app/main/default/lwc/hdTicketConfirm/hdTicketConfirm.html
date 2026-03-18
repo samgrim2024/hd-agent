@@ -1,0 +1,35 @@
+<template>
+    <div class="confirm-container">
+        <div class="confirm-card">
+            <div class="confirm-header">
+                <span class="check-icon">&#10003;</span>
+                <span class="confirm-title">Ticket created</span>
+            </div>
+            <div class="confirm-details">
+                <div class="detail-row">
+                    <span class="detail-label">Ticket</span>
+                    <span class="detail-value">{ticketNumber}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Subject</span>
+                    <span class="detail-value">{ticketSubject}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Type</span>
+                    <span class="detail-value">{ticketType}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Business Unit</span>
+                    <span class="detail-value">{businessUnit}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Status</span>
+                    <span class="status-badge">Not Started</span>
+                </div>
+            </div>
+            <a href={ticketLink} class="ticket-link" target="_blank">
+                View ticket &#8599;
+            </a>
+        </div>
+    </div>
+</template>

@@ -2,13 +2,13 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>64.0</apiVersion>
     <isExposed>true</isExposed>
-    <masterLabel>HD Ticket Intake</masterLabel>
+    <masterLabel>HD Ticket Confirm</masterLabel>
     <targets>
-        <target>lightning__AgentforceInput</target>
+        <target>lightning__AgentforceOutput</target>
     </targets>
     <targetConfigs>
-        <targetConfig targets="lightning__AgentforceInput">
-            <targetType name="c__hdTicketIntake"/>
+        <targetConfig targets="lightning__AgentforceOutput">
+            <sourceType name="c__hdTicketConfirm"/>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

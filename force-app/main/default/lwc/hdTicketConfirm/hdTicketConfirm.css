@@ -1,0 +1,84 @@
+.confirm-container {
+    padding: 0.5rem;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+}
+
+.confirm-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background: #fff;
+}
+
+.confirm-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.875rem;
+}
+
+.check-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background: #2e844a;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.confirm-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #181818;
+}
+
+.confirm-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    margin-bottom: 0.875rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-label {
+    font-size: 0.75rem;
+    color: #706e6b;
+}
+
+.detail-value {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #181818;
+}
+
+.status-badge {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.75rem;
+    background: #fafaf9;
+    color: #706e6b;
+    border: 1px solid #e5e5e5;
+}
+
+.ticket-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #0176d3;
+    text-decoration: none;
+}
+
+.ticket-link:hover {
+    text-decoration: underline;
+}

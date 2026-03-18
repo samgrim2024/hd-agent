@@ -1,23 +1,45 @@
 <template>
     <div class="intake-container">
-        <div class="section">
-            <h3 class="section-title">Select your business unit</h3>
-            <p class="section-subtitle">Choose the team this request relates to</p>
-            <div class="pill-grid">
-                <template for:each={businessUnits} for:item="bu">
-                    <button
-                        key={bu.value}
-                        class={bu.cssClass}
-                        data-id={bu.value}
-                        onclick={handleBuClick}>
-                        {bu.label}
-                    </button>
+
+        <!-- SUBMITTED STATE -->
+        <template lwc:if={isSubmitted}>
+            <div class="summary-complete">
+                <div class="summary-bar">
+                    <span class="summary-chip bu-chip">{selectedBuLabel}</span>
+                    <span class="summary-arrow">&#8250;</span>
+                    <span class="summary-chip type-chip">{selectedTypeLabel}</span>
+                </div>
+                <template lwc:if={subject}>
+                    <p class="summary-subject">{subject}</p>
                 </template>
             </div>
-        </div>
+        </template>
 
-        <template lwc:if={showTicketTypes}>
+        <!-- STEP 1: Business Unit -->
+        <template lwc:if={isStep1}>
             <div class="section fade-in">
+                <h3 class="section-title">Select your business unit</h3>
+                <p class="section-subtitle">Choose the team this request relates to</p>
+                <div class="pill-grid">
+                    <template for:each={businessUnits} for:item="bu">
+                        <button
+                            key={bu.value}
+                            class={bu.cssClass}
+                            data-id={bu.value}
+                            onclick={handleBuClick}>
+                            {bu.label}
+                        </button>
+                    </template>
+                </div>
+            </div>
+        </template>
+
+        <!-- STEP 2: Ticket Type -->
+        <template lwc:if={isStep2}>
+            <div class="section fade-in">
+                <div class="step-context">
+                    <span class="context-chip">{selectedBuLabel}</span>
+                </div>
                 <h3 class="section-title">What do you need?</h3>
                 <p class="section-subtitle">Select the closest match</p>
                 <div class="type-grid">
@@ -50,17 +72,104 @@
                         onchange={handleFreeTextChange}
                         max-length="500">
                     </lightning-textarea>
+                    <template lwc:if={freeTextValue}>
+                        <button class="continue-btn" onclick={handleFreeTextContinue}>
+                            Continue
+                        </button>
+                    </template>
                 </div>
+
+                <button class="back-link" onclick={handleBack}>
+                    &#8249; Change business unit
+                </button>
             </div>
         </template>
 
-        <template lwc:if={showSummary}>
-            <div class="summary-bar fade-in">
-                <span class="summary-label">Selection</span>
-                <span class="summary-chip bu-chip">{selectedBuLabel}</span>
-                <span class="summary-arrow">&#8250;</span>
-                <span class="summary-chip type-chip">{selectedTypeLabel}</span>
+        <!-- STEP 3: Bug Detail Fields -->
+        <template lwc:if={isStep3Bug}>
+            <div class="section fade-in">
+                <div class="step-context">
+                    <span class="context-chip">{selectedBuLabel}</span>
+                    <span class="context-arrow">&#8250;</span>
+                    <span class="context-chip type">{selectedTypeLabel}</span>
+                </div>
+                <h3 class="section-title">Tell us about the issue</h3>
+                <p class="section-subtitle">Fill in what you can — the more detail, the faster we can help</p>
+                <div class="form-fields">
+                    <div class="field-group">
+                        <lightning-input
+                            label="Subject"
+                            placeholder="e.g. Missing visibility of fields on finance review"
+                            value={subject}
+                            onchange={handleFieldChange}
+                            name="subject"
+                            required>
+                        </lightning-input>
+                    </div>
+                    <div class="field-group">
+                        <lightning-input
+                            type="url"
+                            label="Link to record"
+                            placeholder="Paste the URL of the record where you saw the issue"
+                            value={linkToRecord}
+                            onchange={handleFieldChange}
+                            name="linkToRecord">
+                        </lightning-input>
+                    </div>
+                    <div class="field-group">
+                        <lightning-textarea
+                            label="Expected behaviour"
+                            placeholder="What did you expect to happen?"
+                            value={expectedBehaviour}
+                            onchange={handleFieldChange}
+                            name="expectedBehaviour"
+                            max-length="5000">
+                        </lightning-textarea>
+                    </div>
+                    <div class="field-group">
+                        <lightning-textarea
+                            label="Steps to reproduce"
+                            placeholder="1. Go to...&#10;2. Click on...&#10;3. Notice that..."
+                            value={stepsToReproduce}
+                            onchange={handleFieldChange}
+                            name="stepsToReproduce"
+                            max-length="5000">
+                        </lightning-textarea>
+                    </div>
+                </div>
+                <button class="back-link" onclick={handleBackToType}>
+                    &#8249; Change ticket type
+                </button>
             </div>
         </template>
+
+        <!-- STEP 3: Other Type - Subject Only -->
+        <template lwc:if={isStep3Other}>
+            <div class="section fade-in">
+                <div class="step-context">
+                    <span class="context-chip">{selectedBuLabel}</span>
+                    <span class="context-arrow">&#8250;</span>
+                    <span class="context-chip type">{selectedTypeLabel}</span>
+                </div>
+                <h3 class="section-title">Describe your request</h3>
+                <p class="section-subtitle">Give us a brief summary</p>
+                <div class="form-fields">
+                    <div class="field-group">
+                        <lightning-input
+                            label="Subject"
+                            placeholder="Brief description of your request"
+                            value={subject}
+                            onchange={handleFieldChange}
+                            name="subject"
+                            required>
+                        </lightning-input>
+                    </div>
+                </div>
+                <button class="back-link" onclick={handleBackToType}>
+                    &#8249; Change ticket type
+                </button>
+            </div>
+        </template>
+
     </div>
 </template>

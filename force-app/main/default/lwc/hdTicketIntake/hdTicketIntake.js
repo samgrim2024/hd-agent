@@ -1,4 +1,4 @@
-import { LightningElement, api } from 'lwc';
+import { api, LightningElement } from 'lwc';
 
 const BUSINESS_UNITS = [
     { value: 'Acquisition', label: 'Acquisition' },
@@ -34,23 +34,48 @@ const TICKET_TYPES = [
 
 export default class HdTicketIntake extends LightningElement {
 
-    @api businessUnit;
-    @api ticketType;
-    @api subject;
-
+    currentStep = 1;
+    submitted = false;
     selectedBu = null;
     selectedType = null;
     freeTextValue = '';
-
-    _value = {};
+    subject = '';
+    linkToRecord = '';
+    expectedBehaviour = '';
+    stepsToReproduce = '';
 
     @api
-    get value() {
-        return this._value;
+    get readOnly() { return this._readOnly; }
+    set readOnly(value) {
+        this._readOnly = value;
+        if (value === true) {
+            this.submitted = true;
+        }
     }
+    _readOnly = false;
+
+    _value;
+    @api
+    get value() { return this._value; }
     set value(val) {
-        this._value = val || {};
+        this._value = val;
+        if (val && val.businessUnit) {
+            this.selectedBu = val.businessUnit;
+            this.selectedType = val.ticketType;
+            this.freeTextValue = val.freeText || '';
+            this.subject = val.subject || '';
+            this.linkToRecord = val.linkToRecord || '';
+            this.expectedBehaviour = val.expectedBehaviour || '';
+            this.stepsToReproduce = val.stepsToReproduce || '';
+            this.submitted = true;
+        }
     }
+
+    get isSubmitted() { return this.submitted; }
+    get isStep1() { return !this.submitted && this.currentStep === 1; }
+    get isStep2() { return !this.submitted && this.currentStep === 2; }
+    get isStep3Bug() { return !this.submitted && this.currentStep === 3 && this.selectedType === 'Bug/Error Report'; }
+    get isStep3Other() { return !this.submitted && this.currentStep === 3 && this.selectedType !== 'Bug/Error Report'; }
 
     get businessUnits() {
         return BUSINESS_UNITS.map(bu => ({
@@ -68,57 +93,99 @@ export default class HdTicketIntake extends LightningElement {
         }));
     }
 
-    get showTicketTypes() {
-        return this.selectedBu !== null;
-    }
-
-    get showSummary() {
-        return this.selectedBu !== null && (this.selectedType !== null || this.freeTextValue);
-    }
-
     get selectedBuLabel() {
         const found = BUSINESS_UNITS.find(bu => bu.value === this.selectedBu);
         return found ? found.label : '';
     }
 
     get selectedTypeLabel() {
-        if (this.freeTextValue) {
-            return 'Custom request';
-        }
+        if (this.freeTextValue) return 'Custom request';
         const found = TICKET_TYPES.find(tt => tt.value === this.selectedType);
         return found ? found.label : '';
     }
 
+    get summarySubject() { return this.subject || ''; }
+
     handleBuClick(event) {
+        event.stopPropagation();
         this.selectedBu = event.currentTarget.dataset.id;
         this.selectedType = null;
         this.freeTextValue = '';
-        this.updateValue();
+        this.resetFields();
+        this.currentStep = 2;
+        this.fireValueChange();
     }
 
     handleTypeClick(event) {
+        event.stopPropagation();
         this.selectedType = event.currentTarget.dataset.id;
         this.freeTextValue = '';
-        this.updateValue();
+        this.resetFields();
+        this.currentStep = 3;
+        this.fireValueChange();
     }
 
     handleFreeTextChange(event) {
+        event.stopPropagation();
         this.freeTextValue = event.detail.value;
         if (this.freeTextValue) {
             this.selectedType = null;
         }
-        this.updateValue();
+        this.fireValueChange();
     }
 
-    updateValue() {
-        this._value = {
-            businessUnit: this.selectedBu,
-            ticketType: this.selectedType,
-            freeText: this.freeTextValue || null
-        };
+    handleFreeTextContinue() {
+        this.selectedType = 'Other';
+        this.currentStep = 3;
+        this.fireValueChange();
+    }
 
-        this.dispatchEvent(new CustomEvent('valuechange', {
-            detail: { value: this._value }
-        }));
+    handleBack() {
+        this.selectedBu = null;
+        this.selectedType = null;
+        this.freeTextValue = '';
+        this.resetFields();
+        this.currentStep = 1;
+        this.fireValueChange();
+    }
+
+    handleBackToType() {
+        this.selectedType = null;
+        this.freeTextValue = '';
+        this.resetFields();
+        this.currentStep = 2;
+        this.fireValueChange();
+    }
+
+    handleFieldChange(event) {
+        event.stopPropagation();
+        const { name, value } = event.target;
+        this[name] = value;
+        this.fireValueChange();
+    }
+
+    resetFields() {
+        this.subject = '';
+        this.linkToRecord = '';
+        this.expectedBehaviour = '';
+        this.stepsToReproduce = '';
+    }
+
+    fireValueChange() {
+        this.dispatchEvent(
+            new CustomEvent('valuechange', {
+                detail: {
+                    value: {
+                        businessUnit: this.selectedBu,
+                        ticketType: this.selectedType,
+                        freeText: this.freeTextValue || null,
+                        subject: this.subject || null,
+                        linkToRecord: this.linkToRecord || null,
+                        expectedBehaviour: this.expectedBehaviour || null,
+                        stepsToReproduce: this.stepsToReproduce || null
+                    }
+                }
+            })
+        );
     }
 }
