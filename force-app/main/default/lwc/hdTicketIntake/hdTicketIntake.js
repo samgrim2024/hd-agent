@@ -34,6 +34,10 @@ const TICKET_TYPES = [
 
 export default class HdTicketIntake extends LightningElement {
 
+    @api businessUnit;
+    @api ticketType;
+    @api subject;
+
     selectedBu = null;
     selectedType = null;
     freeTextValue = '';

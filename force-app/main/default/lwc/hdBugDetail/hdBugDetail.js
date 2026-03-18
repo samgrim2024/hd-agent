@@ -2,6 +2,10 @@ import { LightningElement, api } from 'lwc';
 
 export default class HdBugDetail extends LightningElement {
 
+    @api businessUnit;
+    @api ticketType;
+    @api subject;
+
     subject = '';
     linkToRecord = '';
     expectedBehaviour = '';

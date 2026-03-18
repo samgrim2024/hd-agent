@@ -1,74 +1,12 @@
 public with sharing class HDAgent {
 
-    public class TicketRequest {
-        @InvocableVariable(label='Business Unit' required=true
-            description='The business unit this ticket relates to: Acquisition, Design, Build, Business Development, Operations, Management, HSSEQ, Stores & Logistics, External Contractor, Fixed Line, SPEN FSL - O&M')
-        public String businessUnit;
-
-        @InvocableVariable(label='Ticket Type' required=true
-            description='The type of ticket: Bug/Error Report, New Feature/Functionality Request, Data Management, User Management, Reporting/Dashboards, SmartHOPs, Training Request, New Software Request, DNO/ICP Installation, Other')
-        public String ticketType;
-
-        @InvocableVariable(label='Subject' required=true
-            description='A short summary of the issue or request')
-        public String subject;
-
-        @InvocableVariable(label='Expected Behaviour'
-            description='What the user expected to happen (for bug reports)')
-        public String expectedBehaviour;
-
-        @InvocableVariable(label='Steps to Reproduce'
-            description='Steps to reproduce the issue (for bug reports)')
-        public String stepsToReproduce;
-
-        @InvocableVariable(label='Link to Record'
-            description='URL link to the Salesforce record related to this issue')
-        public String linkToRecord;
-
-        @InvocableVariable(label='Additional Detail'
-            description='Any extra context or detail provided by the user')
-        public String additionalDetail;
-    }
-
-    public class TicketResponse {
-        @InvocableVariable(label='Ticket ID')
-        public String ticketId;
-
-        @InvocableVariable(label='Ticket Number')
-        public String ticketNumber;
-
-        @InvocableVariable(label='Ticket URL')
-        public String ticketUrl;
-
-        @InvocableVariable(label='Subject')
-        public String subject;
-
-        @InvocableVariable(label='Business Unit')
-        public String businessUnit;
-
-        @InvocableVariable(label='Ticket Type')
-        public String ticketType;
-
-        @InvocableVariable(label='Status')
-        public String status;
-
-        @InvocableVariable(label='Description')
-        public String description;
-
-        @InvocableVariable(label='Success')
-        public Boolean success;
-
-        @InvocableVariable(label='Error Message')
-        public String errorMessage;
-    }
-
     @InvocableMethod(label='HD Agent - Create Ticket'
                      description='Creates a new Help Desk ticket from agent conversation input. Use when the user wants to raise a ticket, report a bug, request a feature, or log any support request.')
-    public static List<TicketResponse> createTicket(List<TicketRequest> requests) {
-        List<TicketResponse> responses = new List<TicketResponse>();
+    public static List<HDTicketResponse> createTicket(List<HDTicketRequest> requests) {
+        List<HDTicketResponse> responses = new List<HDTicketResponse>();
 
-        for (TicketRequest req : requests) {
-            TicketResponse res = new TicketResponse();
+        for (HDTicketRequest req : requests) {
+            HDTicketResponse res = new HDTicketResponse();
 
             try {
                 String fullDescription = buildDescription(req);
@@ -112,7 +50,7 @@ public with sharing class HDAgent {
         return responses;
     }
 
-    private static String buildDescription(TicketRequest req) {
+    private static String buildDescription(HDTicketRequest req) {
         List<String> parts = new List<String>();
 
         if (String.isNotBlank(req.expectedBehaviour)) {
@@ -125,6 +63,10 @@ public with sharing class HDAgent {
 
         if (String.isNotBlank(req.additionalDetail)) {
             parts.add('Additional Detail: ' + req.additionalDetail.trim());
+        }
+
+        if (String.isNotBlank(req.freeText)) {
+            parts.add('Additional Detail: ' + req.freeText.trim());
         }
 
         if (String.isNotBlank(req.linkToRecord)) {

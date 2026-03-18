@@ -1,0 +1,4 @@
+{
+    "type": "object",
+    "lightning:type": "@apexClassType/c__HDTicketRequest"
+}

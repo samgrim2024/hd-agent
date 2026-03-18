@@ -3,7 +3,7 @@ private class HDAgentTest {
 
     @isTest
     static void testCreateTicket_BugReport() {
-        HDAgent.TicketRequest req = new HDAgent.TicketRequest();
+        HDTicketRequest req = new HDTicketRequest();
         req.businessUnit = 'Design';
         req.ticketType = 'Bug/Error Report';
         req.subject = 'Missing visibility of fields';
@@ -12,11 +12,11 @@ private class HDAgentTest {
         req.linkToRecord = 'https://example.salesforce.com/001xx000003ABCD';
 
         Test.startTest();
-        List<HDAgent.TicketResponse> responses =
-            HDAgent.createTicket(new List<HDAgent.TicketRequest>{ req });
+        List<HDTicketResponse> responses =
+            HDAgent.createTicket(new List<HDTicketRequest>{ req });
         Test.stopTest();
 
-        HDAgent.TicketResponse res = responses[0];
+        HDTicketResponse res = responses[0];
         System.assertEquals(true, res.success);
         System.assertNotEquals(null, res.ticketId);
         System.assertNotEquals(null, res.ticketNumber);
@@ -28,37 +28,39 @@ private class HDAgentTest {
 
     @isTest
     static void testCreateTicket_NewFeature() {
-        HDAgent.TicketRequest req = new HDAgent.TicketRequest();
+        HDTicketRequest req = new HDTicketRequest();
         req.businessUnit = 'Build';
         req.ticketType = 'New Feature/Functionality Request';
         req.subject = 'Add bulk assignment for installations';
         req.additionalDetail = 'Would save 2 hours per week on large projects';
 
         Test.startTest();
-        List<HDAgent.TicketResponse> responses =
-            HDAgent.createTicket(new List<HDAgent.TicketRequest>{ req });
+        List<HDTicketResponse> responses =
+            HDAgent.createTicket(new List<HDTicketRequest>{ req });
         Test.stopTest();
 
-        HDAgent.TicketResponse res = responses[0];
+        HDTicketResponse res = responses[0];
         System.assertEquals(true, res.success);
         System.assertEquals('Build', res.businessUnit);
         System.assert(res.description.contains('Additional Detail:'));
     }
 
     @isTest
-    static void testCreateTicket_MinimalFields() {
-        HDAgent.TicketRequest req = new HDAgent.TicketRequest();
+    static void testCreateTicket_FreeText() {
+        HDTicketRequest req = new HDTicketRequest();
         req.businessUnit = 'Operations';
         req.ticketType = 'Other';
-        req.subject = 'General enquiry';
+        req.subject = 'Reporting dashboard access';
+        req.freeText = 'I need access to the Build team reporting dashboards';
 
         Test.startTest();
-        List<HDAgent.TicketResponse> responses =
-            HDAgent.createTicket(new List<HDAgent.TicketRequest>{ req });
+        List<HDTicketResponse> responses =
+            HDAgent.createTicket(new List<HDTicketRequest>{ req });
         Test.stopTest();
 
-        HDAgent.TicketResponse res = responses[0];
+        HDTicketResponse res = responses[0];
         System.assertEquals(true, res.success);
         System.assertEquals('Not Started', res.status);
+        System.assert(res.description.contains('Additional Detail:'));
     }
 }
